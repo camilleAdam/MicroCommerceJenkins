@@ -1,8 +1,14 @@
 pipeline {
     agent any
 
-    tools{
+    tools {
+        git 'Adam Camille'
+        jdk 'Java 8.171'
         maven 'Maven 3.6.0'
+    }
+
+    triggers {
+        pollSCM '* * * * * '
     }
 
     stages {
