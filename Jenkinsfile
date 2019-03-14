@@ -22,14 +22,14 @@ pipeline {
 
             steps{
                 echo 'testing...'
-                bat 'mvn test'
+//                bat 'mvn test'
                 step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
             }
         }
         stage('Deploy') {
             steps{
                 echo 'deploying...'
-//                bat 'mvn install'
+                bat 'mvn install'
 
             }
         }
