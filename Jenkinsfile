@@ -16,7 +16,6 @@ pipeline {
             steps {
                 echo 'building...'
                 bat 'mvn clean'
-                bat 'mvn install'
             }
         }
         stage('Test') {
@@ -30,6 +29,8 @@ pipeline {
         stage('Deploy') {
             steps{
                 echo 'deploying...'
+                bat 'mvn install'
+
             }
         }
     }
