@@ -15,16 +15,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building...'
-//                bat 'mvn clean'
+                bat 'mvn clean'
             }
         }
         stage('Test') {
 
             steps{
                 echo 'testing...'
-//                junit '**/target/surefire-reports/*.xml'
-//                testResults '**/target/surefire-reports/*.xml'
-//                allowEmptyResults 'true'
+                junit '**/target/surefire-reports/*.xml'
+                testResults '**/target/surefire-reports/*.xml'
+                allowEmptyResults 'true'
             }
         }
         stage('Deploy') {
