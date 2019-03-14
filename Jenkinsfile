@@ -7,9 +7,9 @@ pipeline {
         maven 'Maven 3.6.0'
     }
 
-    triggers {
-        pollSCM '* * * * * '
-    }
+//    triggers {
+//        pollSCM '* * * * * '
+//    }
 
     stages {
         stage('Build') {
@@ -23,7 +23,6 @@ pipeline {
             steps{
                 echo 'testing...'
                 bat 'mvn test'
-//                junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
                 step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
             }
         }
