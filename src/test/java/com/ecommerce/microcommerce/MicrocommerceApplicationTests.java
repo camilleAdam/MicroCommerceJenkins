@@ -20,7 +20,7 @@ public class MicrocommerceApplicationTests {
 
 		ProductController controller = new ProductController();
 		controller.saySomething();
-		String something = "something";
+		String something = "somethng";
 		assertEquals(something, controller.saySomething());
 	}
 

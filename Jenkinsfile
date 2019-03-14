@@ -24,9 +24,6 @@ pipeline {
             steps{
                 echo 'testing...'
                 junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
-//                junit '**/target/surefire-reports/*.xml'
-//                testResults '**/target/surefire-reports/*.xml'
-//                allowEmptyResults 'true'
             }
         }
         stage('Deploy') {
