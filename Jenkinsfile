@@ -7,9 +7,9 @@ pipeline {
         maven 'Maven 3.6.0'
     }
 
-//    triggers {
-//        pollSCM '* * * * * '
-//    }
+    triggers {
+        pollSCM '* * * * * '
+    }
 
     stages {
         stage('Build') {
