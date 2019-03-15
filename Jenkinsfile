@@ -22,7 +22,6 @@ pipeline {
 
             steps{
                 echo 'testing...'
-//                bat 'mvn test'
                 step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
             }
         }
@@ -30,7 +29,6 @@ pipeline {
             steps{
                 echo 'deploying...'
                 bat 'mvn install'
-
             }
         }
     }
@@ -38,6 +36,14 @@ pipeline {
     post {
         always {
             junit '**/target/surefire-reports/*.xml'
+        }
+
+        success {
+            when {
+                branch 'dev'
+                bat 'git commit -am "Merged branch to master"'
+                bat 'git push origin master'
+            }
         }
     }
 }
