@@ -45,7 +45,7 @@ pipeline {
 //            bat 'git status'
 
             bat 'git pull origin master'
-            bat 'git merge origin dev'
+            bat 'git merge origin/dev'
             bat 'git push origin master'
 
         }
