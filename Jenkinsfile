@@ -41,9 +41,9 @@ pipeline {
         success {
 
             bat 'git fetch'
-            bat 'git checkout master'
+            bat 'git checkout origin master'
             bat 'git pull origin master'
-            bat 'git merge dev'
+            bat 'git merge origin dev'
             bat 'git push origin master'
 
         }
