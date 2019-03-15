@@ -40,9 +40,10 @@ pipeline {
 
         success {
 
+            bat 'git checkout master'
+            bat 'git pull origin/master'
             bat 'git merge dev'
-            bat 'git commit -am "Merged branch to master"'
-            bat 'git push origin master'
+            bat 'git push origin/master'
 
         }
     }
