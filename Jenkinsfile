@@ -39,11 +39,15 @@ pipeline {
         }
 
         success {
-            when {
-                branch 'dev'
-                bat 'git merge dev'
-                bat 'git commit -am "Merged branch to master"'
-                bat 'git push origin master'
+            stage('Git'){
+                when {
+                    branch 'dev'
+                }
+                steps{
+                    bat 'git merge dev'
+                    bat 'git commit -am "Merged branch to master"'
+                    bat 'git push origin master'
+                }
             }
         }
     }
