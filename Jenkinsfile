@@ -46,7 +46,7 @@ pipeline {
             bat 'git checkout origin/master'
             bat 'git pull origin master'
             bat 'git merge origin/dev'
-            bat 'git push origin master'
+            bat 'git push origin/master'
 
         }
     }
