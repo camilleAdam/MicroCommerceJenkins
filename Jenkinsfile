@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 echo 'deploying...'
-                bat 'mvn install'
+//                bat 'mvn install'
             }
         }
     }
@@ -45,9 +45,12 @@ pipeline {
             bat 'git fetch'
             bat 'git checkout master'
             bat 'git status'
-//            bat 'git pull origin master'
-//            bat 'git merge origin/dev'
-//            bat 'git push origin/master'
+            bat 'git pull origin master'
+            bat 'git status'
+            bat 'git merge origin/dev'
+            bat 'git status'
+            bat 'git push origin/master'
+            bat 'git status'
 
         }
     }
