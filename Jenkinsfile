@@ -43,10 +43,11 @@ pipeline {
 //            git credentialsId: '51ca3047-f62f-4250-9ab0-7d1f2e83ba99', url: 'https://github.com/camilleAdam/MicroCommerceJenkins'
 
             bat 'git fetch'
-            bat 'git checkout origin/master'
-            bat 'git pull origin master'
-            bat 'git merge origin/dev'
-            bat 'git push origin/master'
+            bat 'git checkout master'
+            bat 'git status'
+//            bat 'git pull origin master'
+//            bat 'git merge origin/dev'
+//            bat 'git push origin/master'
 
         }
     }
