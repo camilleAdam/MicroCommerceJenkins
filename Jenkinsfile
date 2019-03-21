@@ -40,6 +40,7 @@ pipeline {
 
         success {
 
+            git branch: '', credentialsId: 'ba012e23-83bb-4d28-930c-b6e32747e46c', url: 'https://github.com/camilleAdam/MicroCommerceJenkins.git'
             bat 'git fetch'
             bat 'git checkout dev'
             bat 'git pull origin dev'
