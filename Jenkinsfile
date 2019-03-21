@@ -44,7 +44,6 @@ pipeline {
 
             bat 'git fetch'
             bat 'git checkout master'
-            bat 'git status'
             bat 'git pull origin master'
             bat 'git status'
             bat 'git merge origin/dev'
