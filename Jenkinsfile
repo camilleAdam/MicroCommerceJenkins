@@ -29,9 +29,7 @@ pipeline {
 
         stage('SonarQube analysis'){
             steps{
-                withSonarQubeEnv('Sonar Scanner') {
                     bat 'mvn clean package sonar:sonar'
-                }
             }
         }
         stage('Deploy') {
