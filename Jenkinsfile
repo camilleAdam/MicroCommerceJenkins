@@ -20,8 +20,10 @@ pipeline {
         }
         stage('SonarQube analysis'){
             steps{
-                bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d375d300225818aa5cd32f06fe02ad8e4aaa5d90'
-                waitForQualityGate abortPipeline: true
+                withSonarQubeEnv('SonarQubeServeur'){
+                    bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d375d300225818aa5cd32f06fe02ad8e4aaa5d90'
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
 //        stage('Test') {
