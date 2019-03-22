@@ -20,7 +20,7 @@ pipeline {
         }
         stage('SonarQube analysis'){
             steps{
-                bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=6e4b46542b294e257fccc5426e4fde47d7e608fa'
+                bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d375d300225818aa5cd32f06fe02ad8e4aaa5d90'
                 waitForQualityGate abortPipeline: true
             }
         }
