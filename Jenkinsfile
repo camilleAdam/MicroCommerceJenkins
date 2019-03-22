@@ -21,15 +21,16 @@ pipeline {
         stage('SonarQube analysis'){
             steps{
                 bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=6e4b46542b294e257fccc5426e4fde47d7e608fa'
+                waitForQualityGate abortPipeline: true
             }
         }
-        stage('Test') {
-
-            steps{
-                echo 'testing...'
-                step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
-            }
-        }
+//        stage('Test') {
+//
+//            steps{
+//                echo 'testing...'
+//                step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
+//            }
+//        }
         stage('Deploy') {
             steps{
                 echo 'deploying...'
@@ -40,7 +41,8 @@ pipeline {
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+//            junit '**/target/surefire-reports/*.xml'
+            step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
         }
 
         success {
