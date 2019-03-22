@@ -18,18 +18,16 @@ pipeline {
                 bat 'mvn clean'
             }
         }
+        stage('SonarQube analysis'){
+            steps{
+                bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=6e4b46542b294e257fccc5426e4fde47d7e608fa'
+            }
+        }
         stage('Test') {
 
             steps{
                 echo 'testing...'
-                bat 'mvn test'
                 step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
-            }
-        }
-
-        stage('SonarQube analysis'){
-            steps{
-                    bat 'mvn clean package sonar:sonar'
             }
         }
         stage('Deploy') {
