@@ -21,8 +21,9 @@ pipeline {
         stage('SonarQube analysis'){
             steps{
                 withSonarQubeEnv('SonarQubeServeur'){
-                    bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d375d300225818aa5cd32f06fe02ad8e4aaa5d90'
+                    bat 'mvn clean package sonar:sonar '
                     waitForQualityGate abortPipeline: true
+//                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d375d300225818aa5cd32f06fe02ad8e4aaa5d90
                 }
             }
         }
