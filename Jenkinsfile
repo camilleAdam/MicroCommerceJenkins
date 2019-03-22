@@ -28,8 +28,10 @@ pipeline {
         }
 
         stage('SonarQube analysis'){
-            withSonarQubeEnv('Sonar Scanner') {
-                bat 'mvn clean package sonar:sonar'
+            steps{
+                withSonarQubeEnv('Sonar Scanner') {
+                    bat 'mvn clean package sonar:sonar'
+                }
             }
         }
         stage('Deploy') {
