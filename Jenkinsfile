@@ -51,7 +51,7 @@ pipeline {
         success {
 //
             echo 'Passed, will be pushed...'
-//            git  credentialsId: 'ba012e23-83bb-4d28-930c-b6e32747e46c', url: 'https://github.com/camilleAdam/MicroCommerceJenkins.git'
+            git  credentialsId: 'keyGit', url: 'git@github.com:camilleAdam/MicroCommerceJenkins.git'
             bat 'git fetch'
             bat 'git checkout dev'
             bat 'git pull origin dev'
