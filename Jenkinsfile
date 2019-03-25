@@ -55,7 +55,7 @@ pipeline {
             bat 'git fetch'
             bat 'git checkout dev'
             bat 'git pull origin dev'
-//            bat 'git status'
+            bat 'git status'
             bat 'git merge origin/test1'
             bat 'git status'
             bat 'git push'
