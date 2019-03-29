@@ -15,7 +15,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building...'
-                bat 'mvn clean'
+                sh 'mvn clean'
+                sh 'mvm test'
             }
         }
         stage('Test') {
@@ -25,12 +26,6 @@ pipeline {
                 step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
             }
         }
-        stage('Deploy') {
-            steps{
-                echo 'deploying...'
-                bat 'mvn install'
-            }
-        }
     }
 
     post {
@@ -38,13 +33,13 @@ pipeline {
             junit '**/target/surefire-reports/*.xml'
         }
 
-        success {
-
-            bat 'git checkout origin/master'
-            bat 'git pull origin/master'
-            bat 'git merge dev'
-            bat 'git push origin/master'
-
-        }
+//        success {
+//
+//            bat 'git checkout origin/master'
+//            bat 'git pull origin/master'
+//            bat 'git merge dev'
+//            bat 'git push origin/master'
+//
+//        }
     }
 }
