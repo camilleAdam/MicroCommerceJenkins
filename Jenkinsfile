@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     tools {
-        git 'Adam Camille'
-        jdk 'Java 8.171'
-        maven 'Maven 3.6.0'
+        git 'Default'
+        jdk 'JDK11'
+        maven 'Maven 3.6'
     }
 
     triggers {
@@ -15,15 +15,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building...'
-                bat 'mvn clean'
+                sh 'mvn clean'
             }
         }
 //        stage('SonarQube analysis'){
 //            steps{
 //                withSonarQubeEnv('SonarQubeServeur'){
-//                    bat 'mvn clean package sonar:sonar '
+//                    sh 'mvn clean package sonar:sonar '
 //                    waitForQualityGate abortPipeline: true
-////                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d375d300225818aa5cd32f06fe02ad8e4aaa5d90
+////                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=8b34b13421bd212f1e0b79aa1d4e3ba7faafdb5b
 //                }
 //            }
 //        }
@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 echo 'deploying...'
-//                bat 'mvn install'
+//                sh 'mvn install'
             }
         }
     }
@@ -51,15 +51,14 @@ pipeline {
         success {
 //
             echo 'Passed, will be pushed...'
-            git  credentialsId: 'keyGit', url: 'git@github.com:camilleAdam/MicroCommerceJenkins.git'
-            bat 'git fetch'
-            bat 'git checkout dev'
-            bat 'git pull origin dev'
-            bat 'git status'
-            bat 'git merge origin/test1'
-            bat 'git status'
-            bat 'git push'
-            bat 'git status'
+            sh 'git fetch'
+            sh 'git checkout dev'
+            sh 'git pull origin dev'
+            sh 'git status'
+            sh 'git merge origin/test1'
+            sh 'git status'
+            sh 'git push'
+            sh 'git status'
 //
         }
     }
