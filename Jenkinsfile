@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     tools {
-        git 'Adam Camille'
-        jdk 'Java 8.171'
-        maven 'Maven 3.6.0'
+      git 'Default'
+      jdk 'JDK11'
+      maven 'Maven 3.6'
     }
 
     triggers {
