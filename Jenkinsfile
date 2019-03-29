@@ -21,7 +21,7 @@ pipeline {
         }
         stage('SonarQube analysis'){
             steps{
-                withSonarQubeEnv('SonarQubeServeur'){
+                withSonarQubeEnv('SonarServer'){
                     sh 'mvn clean package sonar:sonar '
                     waitForQualityGate abortPipeline: true
 //                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=8b34b13421bd212f1e0b79aa1d4e3ba7faafdb5b
