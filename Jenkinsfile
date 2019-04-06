@@ -40,7 +40,7 @@ pipeline {
             sh 'git checkout dev'
             sh 'git pull origin dev'
             sh 'git status'
-            sh 'git pull origin/test1'
+            sh 'git pull origin test1'
             sh 'git status'
             sh 'git push origin dev'
             sh 'git status'
