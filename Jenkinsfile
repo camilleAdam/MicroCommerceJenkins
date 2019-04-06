@@ -16,7 +16,6 @@ pipeline {
             steps {
                 echo 'building...'
                 sh 'mvn clean'
-//                sh 'mvn install'
             }
         }
         stage('SonarQube analysis'){
@@ -31,7 +30,6 @@ pipeline {
 
     post {
         always {
-//            junit '**/target/surefire-reports/*.xml'
             step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'])
         }
 
@@ -44,7 +42,7 @@ pipeline {
             sh 'git status'
             sh 'git merge origin/test1'
             sh 'git status'
-            sh 'git push origin/dev'
+            sh 'git push origin dev'
             sh 'git status'
 
         }
