@@ -23,8 +23,12 @@ pipeline {
             steps{
                 withSonarQubeEnv('SonarServer'){
                     sh 'mvn clean package sonar:sonar '
-                    waitForQualityGate abortPipeline: true
-//                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=8b34b13421bd212f1e0b79aa1d4e3ba7faafdb5b
+
+                    def qualitygate = waitForQualityGate()
+                    if (qualitygate.status != "OK") {
+                        error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                    }
+//                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=5b4428569bcfa3a0286df2179664d435ded1bd28
                 }
             }
         }
