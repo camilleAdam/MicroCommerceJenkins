@@ -44,7 +44,7 @@ pipeline {
             sh 'git status'
             sh 'git merge origin/test1'
             sh 'git status'
-            sh 'git push'
+            sh 'git push origin/dev'
             sh 'git status'
 
         }
