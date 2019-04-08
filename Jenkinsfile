@@ -37,6 +37,7 @@ pipeline {
 
             echo 'Passed, will be pushed...'
             sh 'git fetch'
+            sh 'git config user.name'
             sh 'git checkout dev'
             sh 'git pull origin dev'
             sh 'git status'
