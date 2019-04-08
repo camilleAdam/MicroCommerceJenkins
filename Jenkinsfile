@@ -22,7 +22,7 @@ pipeline {
             steps{
                 withSonarQubeEnv('SonarServer'){
                     sh 'mvn clean package sonar:sonar '
-//                    -Dsonar.host.url=http://localhost:9000 -Dsonar.login=5b4428569bcfa3a0286df2179664d435ded1bd28
+//                    
                 }
             }
         }
